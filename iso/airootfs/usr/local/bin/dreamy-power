@@ -6,5 +6,5 @@ choice="$(printf '%s\n' "Shut down" "Restart" "Log out" \
 case "$choice" in
     "Shut down") systemctl poweroff ;;
     "Restart")   systemctl reboot ;;
-    "Log out")   hyprctl dispatch exit ;;
+    "Log out")   dreamy-logout ;;
 esac

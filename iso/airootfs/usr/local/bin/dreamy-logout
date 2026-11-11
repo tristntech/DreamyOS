@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Leaves the DreamyOS desktop on purpose (so dreamy-session knows it wasn't a crash).
+mkdir -p "$HOME/.cache/dreamyos"
+touch "$HOME/.cache/dreamyos/user-exit"
+hyprctl dispatch 'hl.dsp.exit()'

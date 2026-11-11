@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Shows the DreamyOS keyboard shortcuts in a searchable list (SUPER + /).
-fuzzel --dmenu --prompt "Shortcuts  " --width 56 --lines 17 >/dev/null <<'EOF'
+fuzzel --dmenu --prompt "Shortcuts  " --width 56 --lines 18 >/dev/null <<'EOF'
 SUPER + Enter             Open terminal (Kitty)
 CTRL + ALT + T            Open terminal (alternative)
 SUPER + Space             Open app launcher

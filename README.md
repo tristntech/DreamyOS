@@ -77,9 +77,11 @@ The **cloud button** at the top left of the bar also opens the app launcher, and
 
 ## Troubleshooting
 
-- **Black screen, or the desktop never shows up:** power off the VM, go to
-  *Settings → Display* and **untick Enable 3D Acceleration**, then start it again.
-  The desktop will be slower but works on more setups.
+- **The VM freezes or crashes, the screen goes black, or the desktop never shows up:**
+  power off the VM, go to *Settings → Display* and **untick Enable 3D Acceleration**,
+  then start it again. VirtualBox's 3D support is often unstable with modern Wayland
+  desktops. Without it, DreamyOS automatically switches to *software rendering*: a bit
+  slower, but much more reliable.
 - **You end up at a text screen:** DreamyOS explains what happened. Type
   `dreamy-session` and press Enter to try again. The error log is in
   `~/.cache/dreamyos/hyprland.log`.

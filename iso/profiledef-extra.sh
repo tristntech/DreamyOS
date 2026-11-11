@@ -14,4 +14,5 @@ file_permissions+=(
   ["/usr/local/bin/dreamy-session"]="0:0:755"
   ["/usr/local/bin/dreamy-keybinds"]="0:0:755"
   ["/usr/local/bin/dreamy-power"]="0:0:755"
+  ["/usr/local/bin/dreamy-logout"]="0:0:755"
 )

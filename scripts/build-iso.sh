@@ -49,6 +49,24 @@ for svg in "$PROFILE_DIR"/airootfs/usr/share/backgrounds/dreamyos/*.svg; do
     rsvg-convert -w 3840 -h 2160 "$svg" -o "${svg%.svg}.png"
 done
 
+# 6. Check the Hyprland config before spending time on the ISO.
+echo "==> Checking the Hyprland config"
+HYPR_CONF="$REPO_DIR/iso/airootfs/etc/skel/.config/hypr/hyprland.lua"
+pacman -S --noconfirm --needed lua hyprland >/dev/null
+luac -p "$HYPR_CONF"   # Lua syntax errors stop the build here
+id hyprcheck >/dev/null 2>&1 || useradd -m hyprcheck
+install -d -o hyprcheck -m 700 /tmp/hyprcheck-runtime
+install -o hyprcheck -m 644 "$HYPR_CONF" /home/hyprcheck/hyprland.lua
+if verify_out="$(su hyprcheck -s /bin/bash -c \
+        'XDG_RUNTIME_DIR=/tmp/hyprcheck-runtime Hyprland --verify-config -c /home/hyprcheck/hyprland.lua' 2>&1)"; then
+    echo "::notice title=Hyprland config::Hyprland $(Hyprland --version | head -n 1) says the config is OK"
+else
+    # Shown as a warning on the GitHub run page. Doesn't stop the build, because
+    # the check can also fail for reasons that have nothing to do with the config.
+    echo "$verify_out" | tail -n 40
+    echo "::warning title=Hyprland config check::$(echo "$verify_out" | grep -iE 'error|invalid|unknown|expected' | tail -n 15 | tr '\n' '|' | cut -c1-3000)"
+fi
+
 echo "==> Building the ISO (this takes a while)"
 mkarchiso -v -w "$WORK_DIR/build" -o "$OUT_DIR" "$PROFILE_DIR"
 
