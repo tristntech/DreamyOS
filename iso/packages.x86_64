@@ -15,6 +15,7 @@ grim
 slurp
 wl-clipboard
 qt6-wayland
+xorg-xwayland
 
 # --- Apps ---
 kitty
@@ -22,6 +23,11 @@ firefox
 nautilus
 pavucontrol
 fastfetch
+code
+nano
+
+# --- Flatpak (apps from Flathub) ---
+flatpak
 
 # --- Sound ---
 pipewire

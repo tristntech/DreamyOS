@@ -49,6 +49,22 @@ back to Windows.
 | Password | none |
 | Admin (`sudo`) | works without a password |
 
+## What's included
+
+| | |
+|---|---|
+| Desktop | Hyprland (Wayland), Waybar top bar, fuzzel app launcher, mako notifications |
+| Web browser | Firefox |
+| Terminal | Kitty |
+| Files | Nautilus (GNOME Files) |
+| Code editor | VS Code (Code - OSS, the open-source build) – also the default text editor |
+| More apps | Flatpak with Flathub ready to use, e.g. `flatpak install flathub com.spotify.Client` |
+
+About VS Code: DreamyOS ships *Code - OSS*, the open-source build from Arch's official
+repositories. It gets extensions from [Open VSX](https://open-vsx.org), which has most
+popular extensions (Python, Go, Rust, themes...). A few Microsoft-only extensions
+(Pylance, C# Dev Kit, Remote SSH) need Microsoft's own VS Code build.
+
 ## Keyboard shortcuts
 
 Press **Super + /** at any time to see this list on screen.
@@ -60,6 +76,7 @@ Press **Super + /** at any time to see this list on screen.
 | Super + Space | Open app launcher |
 | Super + B | Open web browser (Firefox) |
 | Super + E | Open file manager (Files) |
+| Super + C | Open code editor (VS Code) |
 | Super + Q | Close window |
 | Super + F | Fullscreen |
 | Super + T | Float / unfloat window |

@@ -1,0 +1,10 @@
+[Unit]
+Description=DreamyOS: add the Flathub app source to Flatpak
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists flathub /usr/share/dreamyos/flathub.flatpakrepo
+
+[Install]
+WantedBy=multi-user.target

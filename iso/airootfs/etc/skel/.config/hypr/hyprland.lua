@@ -21,6 +21,7 @@ hl.monitor({
 local terminal    = "kitty"
 local browser     = "firefox"
 local fileManager = "nautilus"
+local editor      = "code"
 local menu        = "fuzzel"
 
 -- --- Programs that start with the desktop ---
@@ -37,6 +38,7 @@ end)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto") -- VS Code and other Electron apps run natively on Wayland
 
 -- --- Look and feel: white to light blue ---
 hl.config({
@@ -134,6 +136,7 @@ hl.bind("CTRL + ALT + T",       hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + Space",      hl.dsp.exec_cmd(menu))
 hl.bind(mod .. " + B",          hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + E",          hl.dsp.exec_cmd(fileManager))
+hl.bind(mod .. " + C",          hl.dsp.exec_cmd(editor))
 hl.bind(mod .. " + slash",      hl.dsp.exec_cmd("dreamy-keybinds"))
 hl.bind(mod .. " + Escape",     hl.dsp.exec_cmd("dreamy-power"))
 hl.bind(mod .. " + SHIFT + M",  hl.dsp.exec_cmd("dreamy-logout"))

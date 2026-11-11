@@ -49,7 +49,17 @@ for svg in "$PROFILE_DIR"/airootfs/usr/share/backgrounds/dreamyos/*.svg; do
     rsvg-convert -w 3840 -h 2160 "$svg" -o "${svg%.svg}.png"
 done
 
-# 6. Check the Hyprland config before spending time on the ISO.
+# 6. Flathub (the main Flatpak app store): download its official repo file and
+#    turn on the service that adds it on boot.
+install -d "$PROFILE_DIR/airootfs/usr/share/dreamyos"
+curl -fsSL --retry 3 -o "$PROFILE_DIR/airootfs/usr/share/dreamyos/flathub.flatpakrepo" \
+    https://dl.flathub.org/repo/flathub.flatpakrepo
+grep -q '^GPGKey=' "$PROFILE_DIR/airootfs/usr/share/dreamyos/flathub.flatpakrepo"
+install -d "$PROFILE_DIR/airootfs/etc/systemd/system/multi-user.target.wants"
+ln -sf /etc/systemd/system/dreamy-flathub.service \
+    "$PROFILE_DIR/airootfs/etc/systemd/system/multi-user.target.wants/dreamy-flathub.service"
+
+# 7. Check the Hyprland config before spending time on the ISO.
 echo "==> Checking the Hyprland config"
 HYPR_CONF="$REPO_DIR/iso/airootfs/etc/skel/.config/hypr/hyprland.lua"
 pacman -S --noconfirm --needed lua hyprland >/dev/null

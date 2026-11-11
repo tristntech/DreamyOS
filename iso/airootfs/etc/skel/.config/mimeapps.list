@@ -1,0 +1,22 @@
+[Default Applications]
+text/plain=code-oss.desktop
+text/markdown=code-oss.desktop
+text/x-csrc=code-oss.desktop
+text/x-chdr=code-oss.desktop
+text/x-c++src=code-oss.desktop
+text/x-python=code-oss.desktop
+text/x-script.python=code-oss.desktop
+text/x-shellscript=code-oss.desktop
+text/x-log=code-oss.desktop
+text/css=code-oss.desktop
+text/javascript=code-oss.desktop
+text/x-java=code-oss.desktop
+text/x-rust=code-oss.desktop
+text/x-go=code-oss.desktop
+application/x-shellscript=code-oss.desktop
+application/json=code-oss.desktop
+application/xml=code-oss.desktop
+application/x-yaml=code-oss.desktop
+application/toml=code-oss.desktop
+application/javascript=code-oss.desktop
+inode/directory=org.gnome.Nautilus.desktop

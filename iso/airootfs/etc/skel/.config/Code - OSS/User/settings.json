@@ -1,0 +1,10 @@
+{
+    "workbench.colorTheme": "Default Light Modern",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "welcomePage",
+    "telemetry.telemetryLevel": "off",
+    "update.mode": "none"
+}

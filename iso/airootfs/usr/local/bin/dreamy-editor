@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# DreamyOS default text editor.
+# On the desktop: VS Code (Code - OSS). It waits until you close the file,
+# so tools like "git commit" and "sudoedit" work.
+# On a plain text screen (no desktop): nano.
+if [[ -n "${WAYLAND_DISPLAY:-}" ]] && command -v code >/dev/null 2>&1; then
+    exec code --wait "$@"
+else
+    exec nano "$@"
+fi
