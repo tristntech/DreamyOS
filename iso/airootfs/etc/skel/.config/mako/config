@@ -1,0 +1,11 @@
+# DreamyOS notifications (mako). Docs: man 5 mako
+font=Inter 11
+background-color=#ffffffee
+text-color=#1f3a56
+border-color=#7cc4ff
+border-size=2
+border-radius=14
+padding=14
+margin=14
+width=380
+default-timeout=8000

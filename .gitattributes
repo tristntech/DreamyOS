@@ -1,0 +1,5 @@
+# Linux needs LF line endings, even when files are edited on Windows.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.iso binary

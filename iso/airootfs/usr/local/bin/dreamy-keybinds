@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Shows the DreamyOS keyboard shortcuts in a searchable list (SUPER + /).
+fuzzel --dmenu --prompt "Shortcuts  " --width 56 --lines 17 >/dev/null <<'EOF'
+SUPER + Enter             Open terminal (Kitty)
+CTRL + ALT + T            Open terminal (alternative)
+SUPER + Space             Open app launcher
+SUPER + B                 Open web browser (Firefox)
+SUPER + E                 Open file manager (Files)
+SUPER + Q                 Close window
+SUPER + F                 Fullscreen
+SUPER + T                 Float / unfloat window
+SUPER + Arrow keys        Move focus between windows
+SUPER + SHIFT + Arrows    Move window
+SUPER + 1-9               Switch workspace
+SUPER + SHIFT + 1-9       Send window to workspace
+SUPER + Mouse drag        Move (left) / resize (right) window
+Print Screen              Screenshot an area (copied)
+SUPER + Escape            Power menu
+SUPER + SHIFT + M         Log out of the desktop
+SUPER + /                 Show this list
+EOF

@@ -1,0 +1,59 @@
+// DreamyOS top bar (Waybar). Docs: https://github.com/Alexays/Waybar/wiki
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "margin-top": 10,
+    "margin-left": 14,
+    "margin-right": 14,
+    "spacing": 6,
+
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "custom/power"],
+
+    "custom/launcher": {
+        "format": "  DreamyOS",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b   %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "tray": {
+        "spacing": 8
+    },
+
+    "pulseaudio": {
+        "format": "  {volume}%",
+        "format-muted": "  muted",
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  Connected",
+        "format-disconnected": "  Offline",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+
+    "battery": {
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "dreamy-power"
+    }
+}

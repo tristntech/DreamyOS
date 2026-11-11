@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Starts the DreamyOS desktop (Hyprland) and explains what to do if it fails.
+
+mkdir -p "$HOME/.config/hypr" "$HOME/.cache/dreamyos"
+LOG="$HOME/.cache/dreamyos/hyprland.log"
+VM_CONF="$HOME/.config/hypr/vm.conf"
+
+# Virtual machines have limited graphics, so tweak a few settings there.
+virt="$(systemd-detect-virt 2>/dev/null || true)"
+if [[ -n "$virt" && "$virt" != "none" ]]; then
+    cat > "$VM_CONF" <<EOF
+# Created automatically by dreamy-session: running in a virtual machine ($virt).
+cursor {
+    no_hardware_cursors = true
+}
+decoration {
+    blur {
+        enabled = false
+    }
+}
+EOF
+else
+    echo "# Created automatically by dreamy-session: not running in a virtual machine." > "$VM_CONF"
+fi
+
+echo "Starting the DreamyOS desktop..."
+if command -v start-hyprland >/dev/null 2>&1; then
+    start-hyprland >"$LOG" 2>&1
+else
+    Hyprland >"$LOG" 2>&1
+fi
+status=$?
+
+clear
+if [[ $status -eq 0 ]]; then
+    echo
+    echo "  You left the DreamyOS desktop."
+    echo
+    echo "  To go back, type:   dreamy-session"
+    echo "  To shut down, type: poweroff"
+    echo
+else
+    echo
+    echo "  The DreamyOS desktop could not start (error code $status)."
+    echo
+    echo "  If you are using VirtualBox, try this:"
+    echo "    1. Shut down the VM (type: poweroff)"
+    echo "    2. Settings > Display > Graphics Controller: VMSVGA"
+    echo "    3. Turn 'Enable 3D Acceleration' off (or on, if it was off)"
+    echo "    4. Start the VM again"
+    echo
+    echo "  To try again now, type: dreamy-session"
+    echo "  Error details are saved in: $LOG"
+    echo "  Last lines of the log:"
+    echo "  ----------------------------------------"
+    tail -n 15 "$LOG" 2>/dev/null | sed 's/^/  /'
+    echo
+fi

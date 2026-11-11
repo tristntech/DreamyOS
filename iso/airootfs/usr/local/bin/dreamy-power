@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Simple power menu (SUPER + Escape, or the power button in the top bar).
+choice="$(printf '%s\n' "Shut down" "Restart" "Log out" \
+    | fuzzel --dmenu --prompt "Power  " --width 24 --lines 3)"
+
+case "$choice" in
+    "Shut down") systemctl poweroff ;;
+    "Restart")   systemctl reboot ;;
+    "Log out")   hyprctl dispatch exit ;;
+esac

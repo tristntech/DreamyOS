@@ -1,0 +1,44 @@
+# Packages DreamyOS adds on top of Arch's releng package list.
+# One package per line. Lines starting with # are comments.
+
+# --- Desktop (Hyprland + Wayland) ---
+hyprland
+hyprpolkitagent
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+waybar
+fuzzel
+mako
+libnotify
+swaybg
+grim
+slurp
+wl-clipboard
+qt6-wayland
+
+# --- Apps ---
+kitty
+firefox
+nautilus
+pavucontrol
+fastfetch
+
+# --- Sound ---
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+
+# --- Graphics (includes software rendering for virtual machines) ---
+mesa
+
+# --- Fonts ---
+inter-font
+noto-fonts
+noto-fonts-emoji
+ttf-jetbrains-mono-nerd
+
+# --- System ---
+sudo
+polkit
+xdg-user-dirs

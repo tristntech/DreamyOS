@@ -1,0 +1,45 @@
+name: Build DreamyOS ISO
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md"]
+  pull_request:
+  workflow_dispatch: # adds a "Run workflow" button in the Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Get the DreamyOS code
+        uses: actions/checkout@v4
+
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h
+
+      - name: Build the ISO inside an Arch Linux container
+        run: |
+          sudo mkdir -p /mnt/dreamy-work /mnt/dreamy-out
+          docker run --rm --privileged \
+            -v "$GITHUB_WORKSPACE:/build:ro" \
+            -v /mnt/dreamy-work:/work \
+            -v /mnt/dreamy-out:/out \
+            -e WORK_DIR=/work -e OUT_DIR=/out \
+            archlinux:latest \
+            bash /build/scripts/build-iso.sh
+
+      - name: Show the result
+        run: ls -lh /mnt/dreamy-out
+
+      - name: Upload the ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: dreamyos-iso
+          path: /mnt/dreamy-out/*.iso
+          compression-level: 0 # ISOs are already compressed
+          retention-days: 14
+          if-no-files-found: error

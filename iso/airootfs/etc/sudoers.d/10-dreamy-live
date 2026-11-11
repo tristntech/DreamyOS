@@ -1,0 +1,2 @@
+# Live session only: the "dreamy" user can use sudo without a password.
+dreamy ALL=(ALL:ALL) NOPASSWD: ALL
